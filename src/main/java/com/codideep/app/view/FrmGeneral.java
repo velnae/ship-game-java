@@ -27,6 +27,14 @@ public class FrmGeneral extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
+        setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -41,6 +49,10 @@ public class FrmGeneral extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        this.getComponent(0).setBounds(this.getComponent(0).getBounds().x + 2, this.getComponent(0).getBounds().y, this.getComponent(0).getSize().width, this.getComponent(0).getSize().height);
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments

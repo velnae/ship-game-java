@@ -5,6 +5,7 @@
 package com.codideep.app.object;
 
 import com.codideep.app.generic.ObjectAttribute;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -21,16 +22,23 @@ public class Ship extends ObjectAttribute {
 
     public Ship() {
         this.component = new JLabel();
-        
-        imageIconFront = new ImageIcon("");
+
+        this.dimension[0] = 40;
+        this.dimension[1] = 60;
+
+        java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        this.position[0] = (screenSize.width / 2) - (this.dimension[0] / 2);
+        this.position[1] = screenSize.height - (this.dimension[1] + 50);
+
+        imageIconFront = new ImageIcon("D:\\Downloads\\plane.png");
         imageIconLeft = new ImageIcon("");
         imageIconRight = new ImageIcon("");
         imageIconDestroy = new ImageIcon("");
-        
-        this.dimension[0] = 90;
-        this.dimension[1] = 60;
-        
-        this.component.setBounds(0, 0, this.dimension[0], this.dimension[1]);
+
+        imageIconFront = new ImageIcon(imageIconFront.getImage().getScaledInstance(this.dimension[0], this.dimension[1], java.awt.Image.SCALE_SMOOTH));
+
+        this.component.setBounds(this.position[0], this.position[1], this.dimension[0], this.dimension[1]);
         this.component.setIcon(imageIconFront);
     }
 

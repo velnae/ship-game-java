@@ -4,6 +4,11 @@
  */
 package com.codideep.app.main;
 
+import com.codideep.app.object.Ship;
+import com.codideep.app.view.FrmGeneral;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 /**
  *
  * @author KAAF0
@@ -11,6 +16,18 @@ package com.codideep.app.main;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hola en el curso de pp.");
+        FrmGeneral frmGeneral = new FrmGeneral();
+        
+        frmGeneral.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        frmGeneral.setVisible(true);
+        
+        Ship ship = new Ship();
+        
+        ship.component.setText("Aquí debe estar mi nave.");
+        
+        frmGeneral.add(ship.component);
+        
+        frmGeneral.repaint();
     }
 }
