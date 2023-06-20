@@ -4,13 +4,16 @@
  */
 package com.codideep.app.generic;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author KAAF0
  */
 public abstract class ObjectAttribute {
 
-    public static int speed = 0;
-    public static int[] position = {0, 0};
-    public static int[] dimension = {0, 0};
+    public JLabel component = null;
+    public int speed = 0;
+    public int[] position = {0, 0};
+    public int[] dimension = {0, 0};
 }
