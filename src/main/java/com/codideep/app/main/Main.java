@@ -4,6 +4,7 @@
  */
 package com.codideep.app.main;
 
+import com.codideep.app.generic.Screen;
 import com.codideep.app.object.Ship;
 import com.codideep.app.view.FrmGeneral;
 import javax.swing.JFrame;
@@ -16,17 +17,22 @@ import javax.swing.JLabel;
 public class Main {
 
     public static void main(String[] args) {
-        FrmGeneral frmGeneral = new FrmGeneral();
-        
+
+        Ship ship = new Ship();
+        JLabel component = ship.getComponent();
+
+        FrmGeneral frmGeneral = new FrmGeneral(ship);
+        Screen screen = new Screen();
+
         frmGeneral.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frmGeneral.setSize(screen.getWidth(), screen.getHeight());
         
         frmGeneral.setVisible(true);
-        
-        Ship ship = new Ship();
-        
-        ship.component.setText("Aquí debe estar mi nave.");
-        
-        frmGeneral.add(ship.component);
+
+
+        component.setText("Aquí debe estar mi nave.");
+//        frmGeneral.add(component);
         
         frmGeneral.repaint();
     }

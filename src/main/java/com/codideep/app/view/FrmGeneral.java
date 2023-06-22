@@ -4,8 +4,11 @@
  */
 package com.codideep.app.view;
 
+import com.codideep.app.object.Ship;
+
+import java.awt.event.KeyEvent;
+
 /**
- *
  * @author KAAF0
  */
 public class FrmGeneral extends javax.swing.JFrame {
@@ -13,7 +16,13 @@ public class FrmGeneral extends javax.swing.JFrame {
     /**
      * Creates new form FrmGeneral
      */
-    public FrmGeneral() {
+    private Ship ship;
+
+    public FrmGeneral(Ship ship) {
+        if (ship != null) {
+            this.ship = new Ship();
+            add(this.ship.getComponent());
+        }
         initComponents();
     }
 
@@ -31,7 +40,7 @@ public class FrmGeneral extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+            public void keyPressed(KeyEvent evt) {
                 formKeyPressed(evt);
             }
         });
@@ -39,19 +48,41 @@ public class FrmGeneral extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        this.getComponent(0).setBounds(this.getComponent(0).getBounds().x + 2, this.getComponent(0).getBounds().y, this.getComponent(0).getSize().width, this.getComponent(0).getSize().height);
+    private void formKeyPressed(KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+            System.out.println("Tecla derecha presionada");
+            this.ship.component.setBounds(this.ship.component.getBounds().x + 5, this.ship.component.getBounds().y, this.ship.component.getSize().width, this.ship.component.getSize().height);
+            this.ship.setImageRight();
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+            System.out.println("Tecla izquierda presionada");
+            this.ship.component.setBounds(this.ship.component.getBounds().x - 5, this.ship.component.getBounds().y, this.ship.component.getSize().width, this.ship.component.getSize().height);
+            this.ship.setImageLeft();
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            System.out.println("Tecla adelante presionada");
+            this.ship.component.setBounds(this.ship.component.getBounds().x, this.ship.component.getBounds().y - 5, this.ship.component.getSize().width, this.ship.component.getSize().height);
+            this.ship.setImageFront();
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            System.out.println("Tecla adelante presionada");
+            this.ship.component.setBounds(this.ship.component.getBounds().x, this.ship.component.getBounds().y + 5, this.ship.component.getSize().width, this.ship.component.getSize().height);
+            this.ship.setImageFront();
+        }
     }//GEN-LAST:event_formKeyPressed
 
     /**
@@ -61,7 +92,7 @@ public class FrmGeneral extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -84,7 +115,7 @@ public class FrmGeneral extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmGeneral().setVisible(true);
+                new FrmGeneral(null).setVisible(true);
             }
         });
     }
